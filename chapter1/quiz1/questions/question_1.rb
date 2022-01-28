@@ -3,3 +3,5 @@
 def int_to_str(i)
   puts i
 end
+
+int_to_str 160
