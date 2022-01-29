@@ -7,3 +7,8 @@
 #     number is the result of `0 + 1`.
 # * `puts`es these numbers, one per line.
 
+first_number = 0
+second_number = 1
+
+
+
