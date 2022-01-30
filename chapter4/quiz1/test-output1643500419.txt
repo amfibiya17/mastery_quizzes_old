@@ -1,0 +1,85 @@
+....FF
+
+Failures:
+
+  1) Q3. Fibonacci sequence `puts`es first 20 Fibonacci numbers
+     Failure/Error:
+       expect { load "questions/question_3.rb" }
+         .to output(/#{expected}$/).to_stdout
+
+       expected block to output /0
+       1
+       1
+       2
+       3
+       5
+       8
+       13
+       21
+       34
+       55
+       89
+       144
+       233
+       377
+       610
+       987
+       1597
+       2584
+       4181$/ to stdout, but output nothing
+       Diff:
+       @@ -1,21 +1,2 @@
+       -/0
+       -1
+       -1
+       -2
+       -3
+       -5
+       -8
+       -13
+       -21
+       -34
+       -55
+       -89
+       -144
+       -233
+       -377
+       -610
+       -987
+       -1597
+       -2584
+       -4181$/
+       +""
+     # ./spec/question_3_spec.rb:26:in `block (2 levels) in <top (required)>'
+
+  2) Q3. Fibonacci sequence has acceptable code quality
+     Failure/Error: expect(code_quality.acceptable?).to(eq(true), code_quality.problems)
+
+       Inspecting 1 file
+       W
+
+       Offenses:
+
+       questions/question_3.rb:10:1: W: Lint/UselessAssignment: Useless assignment to variable - first_number.
+       first_number = 0
+       ^^^^^^^^^^^^
+       questions/question_3.rb:11:1: W: Lint/UselessAssignment: Useless assignment to variable - second_number.
+       second_number = 1
+       ^^^^^^^^^^^^^
+
+       1 file inspected, 2 offenses detected
+
+       Diff:
+       @@ -1 +1 @@
+       -true
+       +false
+     # ./spec/question_3_spec.rb:32:in `block (2 levels) in <top (required)>'
+
+Finished in 6.11 seconds (files took 0.15612 seconds to load)
+6 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/question_3_spec.rb:25 # Q3. Fibonacci sequence `puts`es first 20 Fibonacci numbers
+rspec ./spec/question_3_spec.rb:30 # Q3. Fibonacci sequence has acceptable code quality
+
