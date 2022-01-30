@@ -9,6 +9,15 @@
 
 first_number = 0
 second_number = 1
+number = 1
 
+puts first_number
+puts second_number
 
-
+while number < 21
+  sum = first_number + second_number
+  first_number = second_number
+  second_number = sum
+  puts sum
+  number += 1
+end
