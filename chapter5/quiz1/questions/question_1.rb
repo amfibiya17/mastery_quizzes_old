@@ -14,3 +14,12 @@
 #   $ ruby question_1.rb
 #   It is certain
 
+r = rand 1..5
+
+case
+  when r == 1 then puts "It is certain"
+  when r == 2 then puts "It is decidedly so"
+  when r == 3 then puts "Ask again later"
+  when r == 4 then puts "Outlook not so good"
+  when r == 5 then puts "Very doubtful"
+end
