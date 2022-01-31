@@ -20,3 +20,25 @@
 # * Note: You can assume the players will only ever input `rock`,
 #   `paper` or `scissors`.
 
+loop do
+  puts "Please choose"
+  input_1 = gets.chomp
+  puts "Please choose"
+  input_2 = gets.chomp
+
+  case
+  when input_1 == input_2
+    puts "It's a draw" 
+    break
+  when input_1.include?("rock") && input_2.include?("scissors") || 
+    input_1.include?("paper") && input_2.include?("rock") ||
+    input_1.include?("scissors") && input_2.include?("paper")
+    puts "Player 1 wins"
+    break
+  when input_2.include?("rock") && input_1.include?("scissors") || 
+    input_2.include?("paper") && input_1.include?("rock") ||
+    input_2.include?("scissors") && input_1.include?("paper")
+    puts "Player 2 wins"
+    break
+  end
+end

@@ -26,3 +26,25 @@
 # * Note: To pass the tests, you'll need to `puts` exactly what's
 #   expected. Watch out for stray punctuation, capital letters, etc.
 
+place = "passage"
+
+loop do
+
+  puts "Choose NORTH or SOUTH?"
+  input = gets.chomp
+
+  case 
+  when place == "passage" && input == "north"
+    puts "You are in a scary cave."
+    place = "cave"
+    
+  when place == "cave" && input == "south"
+    puts "You are in a scary passage."
+    place = "passage"
+    
+  when place == "cave" && input == "north"
+    puts "You walk into sunlight."
+    break
+  end
+
+end

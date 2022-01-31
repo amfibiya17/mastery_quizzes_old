@@ -37,3 +37,43 @@
 # * Note: To pass the tests, you'll need to `puts` exactly what's
 #   expected. Watch out for stray punctuation, capital letters, etc.
 
+place = "hall"
+
+loop do
+
+  puts "Make your chose"
+  input = gets.chomp  
+
+  if input == "quit"
+    puts "Bye!"
+    break
+  end
+  
+  case
+  when place == "hall" && input == "look"
+    puts "You are standing in a hall with a marble floor. You see a door."
+    place = "hall"
+
+  when place == "hall" && input == "north"
+    puts ""
+    place = "study"
+    
+  when place == "study" && input == "look"
+    puts "You are in a warm and cosy study. You see a safe. You see a desk."
+    place = "study"
+
+  when place == "study" && input == "look at desk"
+    puts "You see a piece of paper that reads, The combination is 2451."
+    place = "study"
+    
+  when place == "study" && input == "south"
+    puts ""
+    place = "hall"
+
+  when place == "study" && input == "enter combination 2451"
+    puts "You see some diamonds in the safe, pick them up and make your escape"
+
+    break
+  end
+
+end
