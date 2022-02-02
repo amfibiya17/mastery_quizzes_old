@@ -19,3 +19,15 @@
 # * Note: You can assume the user will only enter integers separated
 #   by commas with no spaces.
 
+puts "What are your numbers?"
+input = gets.chomp
+puts input
+
+array = input.split(",")
+puts array
+# array.map! { |num| num.to_i } ---> different way to solve this problem
+# puts array
+
+array.each do |num|
+  puts "-" * num.to_i # If you use line 28, delete to_i on line 32
+end

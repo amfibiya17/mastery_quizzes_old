@@ -51,3 +51,32 @@
 #   input integers for group numbers that exist when they are asked
 #   for the number of a group to print out.
 
+puts "Enter the group number"
+number_of_groups = gets.chomp.to_i
+groups = Array.new(number_of_groups) { [] }
+# it will creat an array and each item will be an empty array
+
+name_number = 0
+
+puts "Give me a name or STOP when finished"
+loop do
+  input_name = gets.chomp
+  break if input_name == "stop"
+
+  group_number = name_number % number_of_groups
+  groups[group_number].push(input_name)
+  name_number += 1
+end
+
+loop do
+  puts "Which group?"
+  requested_group = gets.chomp
+  break if requested_group == "stop"
+  
+  requested_group = requested_group.to_i - 1
+  output = groups[requested_group]
+  puts output.join(", ")
+end
+
+
+
