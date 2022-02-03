@@ -30,3 +30,19 @@ people = [
   { "name" => "Will", "sport" => "cycling", "fruit" => "blackberry" }
 ]
 
+puts "What category (fruit or sport) to search?"
+category = gets.chomp
+
+if category == "sport"
+  puts "What value to search for?"
+  sport = gets.chomp
+  
+elsif category == "fruit"
+  puts "What fruit to search for?"
+  fruit = gets.chomp
+  
+end
+
+
+# puts people["sport"]
+# puts people["fruit"]
