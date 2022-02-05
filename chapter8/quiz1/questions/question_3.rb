@@ -26,7 +26,6 @@
 # Note: You can assume that, when asked for a category, the user will
 # only enter either `sport` or `fruit`.
 
-
 people = [
   { :name => "Mary", :sport => "squash", :fruit => "blackberry" },
   { :name => "Lauren", :sport => "squash", :fruit => "orange" },
@@ -38,12 +37,12 @@ people = [
 ]
 
 sorted_by_sport = {}
-
 sorted_by_fruit = {}
 
 people.each do |people_under_consideration|
   sport = people_under_consideration[:sport]
   name = people_under_consideration[:name]
+  fruit = people_under_consideration[:fruit]
 
   if sorted_by_sport[sport] == nil
     sorted_by_sport[sport] = [name]
@@ -51,27 +50,25 @@ people.each do |people_under_consideration|
     sorted_by_sport[sport].push(name)
   end
 
-  fruit = people_under_consideration[:fruit]
-  name = people_under_consideration[:name]
-
   if sorted_by_fruit[fruit] == nil
     sorted_by_fruit[fruit] = [name]
   else
     sorted_by_fruit[fruit].push(name)
   end
+
 end
 
-puts "Enter what category to search?"
+puts "Enter category to group people by"
 category = gets.chomp
 
 if category == "sport"
-  puts "What value to search for?"
-  sport = gets.chomp
-  puts sorted_by_sport[sport]
-  
+  sorted_by_sport.each do |a_sport, a_name|
+    puts a_sport
+    puts a_name
+  end
 elsif category == "fruit"
-  puts "What fruit to search for?"
-  fruit = gets.chomp
-  puts sorted_by_fruit[fruit]
-  
+  sorted_by_fruit.each do |a_fruit, a_name|
+    puts a_fruit
+    puts a_name
+  end
 end
