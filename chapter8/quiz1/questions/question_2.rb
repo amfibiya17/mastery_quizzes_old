@@ -21,28 +21,50 @@
 # category value that no person has (e.g. `mango`).
 
 people = [
-  { "name" => "Mary", "sport" => "squash", "fruit" => "blackberry" },
-  { "name" => "Lauren", "sport" => "squash", "fruit" => "orange" },
-  { "name" => "Isla", "sport" => "weightlifting", "fruit" => "banana" },
-  { "name" => "Sam", "sport" => "cycling", "fruit" => "orange" },
-  { "name" => "Govind", "sport" => "squash", "fruit" => "banana" },
-  { "name" => "Awad", "sport" => "weightlifting", "fruit" => "kiwi" },
-  { "name" => "Will", "sport" => "cycling", "fruit" => "blackberry" }
+  { :name => "Mary", :sport => "squash", :fruit => "blackberry" },
+  { :name => "Lauren", :sport => "squash", :fruit => "orange" },
+  { :name => "Isla", :sport => "weightlifting", :fruit => "banana" },
+  { :name => "Sam", :sport => "cycling", :fruit => "orange" },
+  { :name => "Govind", :sport => "squash", :fruit => "banana" },
+  { :name => "Awad", :sport => "weightlifting", :fruit => "kiwi" },
+  { :name => "Will", :sport => "cycling", :fruit => "blackberry" }
 ]
 
-puts "What category (fruit or sport) to search?"
+sorted_by_sport = {}
+
+sorted_by_fruit = {}
+
+people.each do |people_under_consideration|
+  sport = people_under_consideration[:sport]
+  name = people_under_consideration[:name]
+
+  if sorted_by_sport[sport] == nil
+    sorted_by_sport[sport] = [name]
+  else
+    sorted_by_sport[sport].push(name)
+  end
+
+  fruit = people_under_consideration[:fruit]
+  name = people_under_consideration[:name]
+
+  if sorted_by_fruit[fruit] == nil
+    sorted_by_fruit[fruit] = [name]
+  else
+    sorted_by_fruit[fruit].push(name)
+  end
+end
+
+puts "Enter what category to search?"
 category = gets.chomp
 
 if category == "sport"
   puts "What value to search for?"
   sport = gets.chomp
+  puts sorted_by_sport[sport]
   
 elsif category == "fruit"
   puts "What fruit to search for?"
   fruit = gets.chomp
+  puts sorted_by_fruit[fruit]
   
 end
-
-
-# puts people["sport"]
-# puts people["fruit"]
