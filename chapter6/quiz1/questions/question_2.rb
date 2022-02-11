@@ -21,24 +21,29 @@
 #   `paper` or `scissors`.
 
 loop do
-  puts "Please choose"
-  input_1 = gets.chomp
-  puts "Please choose"
-  input_2 = gets.chomp
 
-  case
-  when input_1 == input_2
-    puts "It's a draw" 
+  puts "Choose ROCK, PAPER OR SCISSORS"
+  player_1 = gets.chomp
+
+  puts "Choose ROCK, PAPER OR SCISSORS"
+  player_2 = gets.chomp
+
+  if player_1 == player_2
+    puts "It's a draw"
     break
-  when input_1.include?("rock") && input_2.include?("scissors") || 
-    input_1.include?("paper") && input_2.include?("rock") ||
-    input_1.include?("scissors") && input_2.include?("paper")
+
+  elsif player_1 == "rock" && player_2 == "scissors" ||
+    player_1 == "paper" && player_2 == "rock" ||
+    player_1 == "scissors" && player_2 == "paper"
     puts "Player 1 wins"
     break
-  when input_2.include?("rock") && input_1.include?("scissors") || 
-    input_2.include?("paper") && input_1.include?("rock") ||
-    input_2.include?("scissors") && input_1.include?("paper")
+
+  elsif player_2 == "rock" && player_1 == "scissors" ||
+    player_2 == "paper" && player_1 == "rock" ||
+    player_2 == "scissors" && player_1 == "paper"
     puts "Player 2 wins"
     break
+
   end
+
 end

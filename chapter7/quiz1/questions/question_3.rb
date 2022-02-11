@@ -63,33 +63,40 @@
 #   ```
 
 river = "-----,--C--,CC-CC,CC-CC"
-# character = "P"
-position = 2 
-counter = 0 
+clear_water = "-"
+crocodile = "C"
+player = "P"
+player_position = 2
+level = 0
 
-while counter <= 3
-  river_arr = river.split(",")
-  if river_arr[counter][position] == "C"
-    puts "You were eaten."
-    break
-  else 
-    river_arr[counter][position] = "P"
-  end
+river_array = river.split(",")
 
-  puts river_arr
-  if counter == 3
+while true do
+
+  river_array[level][player_position] = player
+  puts river_array
+  river_array[level][player_position] = clear_water
+
+  if player_position == 2 && level == 3
     puts "You survived!"
     break
-  else   
-    puts "Type left, right or neither"
-    user_input = gets.chomp
-    if user_input == "right"
-      position += 1 
-    elsif user_input == "left"
-      position -= 1 
-    elsif user_input == "neither"
-      position
-    end
   end
-  counter += 1 
+
+  puts "Type left, right or neither"
+  user_input = gets.chomp
+  
+  if user_input == "left"
+    player_position -= 1
+
+  elsif user_input == "right"
+    player_position += 1
+  end
+
+  level += 1
+
+  if river_array[level][player_position] == crocodile
+    puts "You were eaten."
+    break
+  end
+
 end

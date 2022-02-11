@@ -51,32 +51,33 @@
 #   input integers for group numbers that exist when they are asked
 #   for the number of a group to print out.
 
-puts "Enter the group number"
+puts "Enter the number of groups you want to creat"
 number_of_groups = gets.chomp.to_i
-groups = Array.new(number_of_groups) { [] }
-# it will creat an array and each item will be an empty array
+groups = Array.new(number_of_groups) { [] } # creating array of arrays for the future name_input
 
-name_number = 0
-
-puts "Give me a name or STOP when finished"
-loop do
-  input_name = gets.chomp
-  break if input_name == "stop"
-
-  group_number = name_number % number_of_groups
-  groups[group_number].push(input_name)
-  name_number += 1
-end
+count = 0
+puts "Enter a NAME or STOP to quit"
 
 loop do
-  puts "Which group?"
-  requested_group = gets.chomp
-  break if requested_group == "stop"
-  
-  requested_group = requested_group.to_i - 1
-  output = groups[requested_group]
-  puts output.join(", ")
+  name_input = gets.chomp
+  if name_input == "stop"
+    break
+  else
+    groups[count] << name_input
+    count = count + 1
+    if count == number_of_groups
+      count = 0
+    end
+  end
 end
 
+puts "Enter the number of a group to print out"
+loop do
+  group_request = gets.chomp
+  if group_request == "stop"
+    break
+  else
+    puts groups[group_request.to_i - 1].join(", ")
+  end
 
-
+end

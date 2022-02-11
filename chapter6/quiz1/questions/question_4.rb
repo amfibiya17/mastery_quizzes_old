@@ -37,42 +37,46 @@
 # * Note: To pass the tests, you'll need to `puts` exactly what's
 #   expected. Watch out for stray punctuation, capital letters, etc.
 
-place = "hall"
+location = "hall"
 
-loop do
+def user_input
+  puts "Tell me what to do"
+  input = gets.chomp
+  return input
+end
 
-  puts "Make your chose"
-  input = gets.chomp  
-
+while true do
+  
+  input = user_input
+  
   if input == "quit"
     puts "Bye!"
     break
   end
-  
+
   case
-  when place == "hall" && input == "look"
+  when location == "hall" && input == "look"
     puts "You are standing in a hall with a marble floor. You see a door."
-    place = "hall"
+    location = "hall"
 
-  when place == "hall" && input == "north"
-    puts ""
-    place = "study"
-    
-  when place == "study" && input == "look"
+  when location == "hall" && input == "north"
+    puts "You are going to study"
+    location = "study"
+
+  when location == "study" && input == "look"
     puts "You are in a warm and cosy study. You see a safe. You see a desk."
-    place = "study"
+    location = "study"
 
-  when place == "study" && input == "look at desk"
+  when location == "study" && input == "look at desk"
     puts "You see a piece of paper that reads, The combination is 2451."
-    place = "study"
-    
-  when place == "study" && input == "south"
-    puts ""
-    place = "hall"
+    location = "study"
 
-  when place == "study" && input == "enter combination 2451"
+  when location == "study" && input == "south"
+    puts "You are going to hall"
+    location = "hall"
+
+  when location == "study" && input == "enter combination 2451"
     puts "You see some diamonds in the safe, pick them up and make your escape"
-
     break
   end
 

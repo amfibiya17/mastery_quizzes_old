@@ -27,14 +27,19 @@
 # * Note: You can assume that the user will always enter either an
 #   integer or `stop`.
 
-total = 0
+sum = 0
 
 loop do
+
   puts "Give me a number"
-  number = gets.chomp
-  break if number == "stop"
-  
-  total += number.to_i
+  user_input = gets.chomp
+
+  if user_input == "stop"
+    break
+  else
+    sum = sum + user_input.to_i
+  end
+
 end
 
-puts total
+puts sum

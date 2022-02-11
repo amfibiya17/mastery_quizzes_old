@@ -20,14 +20,10 @@
 #   by commas with no spaces.
 
 puts "What are your numbers?"
-input = gets.chomp
-puts input
+user_input = gets.chomp
 
-array = input.split(",")
-puts array
-# array.map! { |num| num.to_i } ---> different way to solve this problem
-# puts array
+array = user_input.split(",")
 
-array.each do |num|
-  puts "-" * num.to_i # If you use line 28, delete to_i on line 32
+array.map do |number|
+  puts "-" * number.to_i 
 end

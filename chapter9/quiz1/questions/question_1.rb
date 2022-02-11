@@ -51,14 +51,6 @@
 #   methods.
 
 # You don't need to change this method!
-# def random_card
-#   cards = ["two", "three", "four", "five", "six", "seven",
-#            "eight", "nine", "ten",
-#            "jack", "queen", "king", "ace"]
-
-#   cards[rand(13)]
-# end
-
 def random_card
   cards = ["two", "three", "four", "five", "six", "seven",
            "eight", "nine", "ten",
@@ -68,56 +60,49 @@ def random_card
 end
 
 def move
-  input = nil
-  until (input == "hit" or input == "stick")
-    puts "hit or stick?"
-    input = gets.chomp
-  end
-  input
-end
-
-def score(array)
-  @accumulator = 0
-
-  values = {
-    "two" => 2, "three" => 3, "four" => 4, "five" => 5,
-    "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9,
-    "ten" => 10, "jack" => 10, "queen" => 10, "king" => 10,
-    "ace" => 11
-  }
-
-  array.each do |card|
-    @accumulator += values[card]
-  end
-
-  return @accumulator
-
-end
-
-def run_game
-  max_score = 21
-  hand = []
-
-  while true do
-    answer = move
-    if answer == "stick"
-      if @accumulator <= max_score
-        return puts "You scored: #{@accumulator}"
-      else
-        return puts "You busted with: #{@accumulator}"
-      end
-    elsif answer == "hit"
-      new_card = random_card
-      hand << new_card
-      puts new_card
-      score(hand)
-      if @accumulator <= max_score
-        puts "Score so far: #{@accumulator}"
-      else
-        return puts "You busted with: #{@accumulator}"
-      end
+  loop do 
+    puts "Player choose hit or stick"
+    answer = gets.chomp
+    if answer == "hit"
+      return "hit"
+    elsif answer == "stick"
+      return "stick"
     end
   end
 end
 
-# run_game
+def score(array_of_cards)
+  score = { "two" => 2, "three" => 3, "four" => 4, "five" => 5, "six" => 6,
+    "seven" => 7, "eight" => 8, "nine" => 9, "ten" => 10, "jack" => 10,
+    "queen" => 10, "king" => 10, "ace" => 11 }
+    
+  points = 0
+    
+  array_of_cards.each do |card|
+    points = points + score[card]
+  end
+
+  return points
+
+end
+  
+def run_game
+    
+  cards = []
+
+  loop do
+
+    if move == "stick"
+      if score(cards) <= 21
+        puts "You scored: #{score(cards)}"
+      elsif score(cards) > 21
+        puts "You busted with: #{score(cards)}"
+      end
+      break
+    else
+      cards << random_card
+      puts "Score so far: #{score(cards)}"
+    end
+  end
+
+end
